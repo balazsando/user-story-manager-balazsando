@@ -2,7 +2,7 @@ import os.path
 from flask import Flask, g, redirect, request, url_for, render_template, flash
 from peewee import *
 
-DATABASE = "homework.db"
+DATABASE = "user_story_manager.db"
 DEBUG = True
 SECRET_KEY = "sumthineffinrandomshiet"
 app = Flask(__name__)
@@ -21,6 +21,7 @@ class UserStory(Model):
 
     class Meta:
         database = database
+        order_by = ["status", "-business_value"]
 
 
 def create_tables():
@@ -42,12 +43,12 @@ def after_request(response):
 
 @app.route("/")
 def homepage():
-    return userstory_list()
+    return list_userstory()
 
 
 @app.route("/list/")
 @app.route("/list/<int:page>")
-def userstory_list(page=1):
+def list_userstory(page=1):
     kwargs = {"page": page,
               "pages": UserStory.select().count() // 10,
               "story_list": UserStory.select().paginate(page, 10)}
@@ -55,9 +56,9 @@ def userstory_list(page=1):
 
 
 @app.route("/story/", methods=["GET", "POST"])
-def new_userstory():
+def create_userstory():
     if request.method == "POST" and all(request.form.to_dict().values()):
-        user_story = UserStory.create(**request.form.to_dict())
+        UserStory.create(**request.form.to_dict())
         flash("User Story created!")
         return redirect(url_for("homepage"))
     return render_template("form.html", story="", submit="Create")

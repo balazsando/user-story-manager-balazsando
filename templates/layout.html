@@ -6,10 +6,10 @@
     </head>
     <body>
         <div class=page>
-            <h1>L4Me Sprint Manager</h1>
+            <h1><a href="{{ url_for('homepage') }}">L4Me Sprint Manager</h1>
             <div class=metanav>
-                <a href="{{ url_for('new_userstory') }}">Add new user story</a>
-                <a href="{{ url_for('userstory_list') }}">User stories</a>
+                <a href="{{ url_for('create_userstory') }}">Add new user story</a>
+                <a href="{{ url_for('list_userstory') }}">User stories</a>
             </div>
             {% for message in get_flashed_messages() %}
                 <div class=flash>{{ message }}</div>

@@ -88,4 +88,4 @@ ENV/
 # Rope project settings
 .ropeproject
 
-homework.db
+user_story_manager.db
