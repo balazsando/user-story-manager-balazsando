@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+<table>
+    <tr>
+        <th>Story title</th>
+        <th>User story</th>
+        <th>Acceptance criteria</th>
+        <th>Business value</th>
+        <th>Estimation</th>
+        <th>Status</th>
+        <th>Options</th>
+    </tr>
+    {% for story in story_list %}
+        {% include "includes/story.html" %}
+    {% endfor %}
+</table>
+{% include "includes/pagination.html" %}
+{% endblock %}

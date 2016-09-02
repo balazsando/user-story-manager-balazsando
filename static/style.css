@@ -1,0 +1,61 @@
+/*form*/
+.form-style-2                       { margin: auto; max-width: 500px; padding: 20px 12px 10px 20px; font: 13px Arial,
+                                      Helvetica, sans-serif; }
+.form-style-2-heading               { font-weight: bold; font-style: italic; border-bottom: 2px solid #ddd;
+                                      margin-bottom: 20px; font-size: 15px; padding-bottom: 3px; }
+.form-style-2 label                 { display: block; margin: 0px 0px 15px 0px; }
+.form-style-2 label > span          { width: 150px; font-weight: bold; float: left; padding-top: 8px;
+                                      padding-right: 5px; }
+.form-style-2 span.required         { color:red; }
+.form-style-2 .tel-number-field     { width: 40px; text-align: center; }
+.form-style-2 input.input-field     { width: 48%; }
+.form-style-2 input.input-field,
+.form-style-2 .tel-number-field,
+.form-style-2 .textarea-field,
+ .form-style-2 .select-field        { box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
+                                      border: 1px solid #C2C2C2; box-shadow: 1px 1px 4px #EBEBEB;
+                                      -moz-box-shadow: 1px 1px 4px #EBEBEB; -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+                                      border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; padding: 7px;
+                                      outline: none; }
+.form-style-2 .input-field:focus,
+.form-style-2 .tel-number-field:focus,
+.form-style-2 .textarea-field:focus,
+.form-style-2 .select-field:focus   { border: 1px solid #0C0; }
+.form-style-2 .textarea-field       { height:100px; width: 55%; }
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]    { border: none; padding: 8px 15px 8px 15px; background: #FF8500; color: #fff;
+                                      box-shadow: 1px 1px 4px #DADADA; -moz-box-shadow: 1px 1px 4px #DADADA;
+                                      -webkit-box-shadow: 1px 1px 4px #DADADA; border-radius: 3px;
+                                      -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{ background: #EA7B00; color: #fff; }
+
+
+/*table*/
+table                               { margin: auto; color: #333; font: 13px Arial, Helvetica, sans-serif;
+                                      width: 650px;border-collapse: collapse; border-spacing: 0; }
+td, th                              { border: 1px solid transparent; height: 30px; transition: all 0.3s; }
+th                                  { background: #FF8500; color: #FFF; font-weight: bold; }
+td                                  { background: #FAFAFA; text-align: center; }
+tr:nth-child(even) td               { background: #F1F1F1; }
+tr:nth-child(odd) td                { background: #FEFEFE; }
+tr td:hover                         { background: #666; color: #FFF; }
+.options:hover                      { background:  #FAFAFA; color: #000;}
+.option                             { height: 13px; width: 13px; }
+
+
+/*the rest*/
+body                                { font: 13px Arial, Helvetica, sans-serif; }
+a, h1, h2                           { font: Arial, Helvetica, sans-serif; color: #777; }
+h1, h2                              { margin: 0; }
+h1                                  { border-bottom: 2px solid #eee; }
+h2                                  { font-size: 1.2em; }
+.page                               { margin: 2em auto; width: 50em; border: 5px solid #ccc; padding: 0.8em;
+                                      background: white; }
+.page ul                            { list-style-type: none; }
+.page li                            { clear: both; }
+.metanav                            { text-align: right; font-size: 0.8em; padding: 0.3em; margin-bottom: 1em;
+                                      background: #fafafa; }
+.flash                              { background: #CEE5F5; padding: 0.5em; border: 1px solid #AACBE2; }
+.avatar                             { display: block; float: left; margin: 0 10px 0 0; }
+.message-content                    { min-height: 80px; }

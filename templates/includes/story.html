@@ -1,0 +1,16 @@
+<tr>
+    <td>{{ story.story_title }}</td>
+    <td>{{ story.user_story }}</td>
+    <td>{{ story.acceptance_criteria }}</td>
+    <td>{{ story.business_value }}</td>
+    <td>{{ story.estimation }}</td>
+    <td>{{ ["Planning", "Todo", "In progress", "Review", "Done"][story.status] }}</td>
+    <td class="options">
+        <a href="{{ url_for('new_userstory') }}?story_id={{ story.id }}">
+            <img class="option" src="{{ url_for('static', filename='pen.ico') }}">
+        </a>
+        <a href="{{ url_for('delete_userstory') }}?story_id={{ story.id }}">
+            <img class="option" src="{{ url_for('static', filename='bin.ico') }}">
+        </a>
+    </td>
+</tr>
