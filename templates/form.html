@@ -1,35 +1,35 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="form-style-2">
-    <div class="form-style-2-heading">{{ title }} user story</div>
+    <div class="form-style-2-heading">{{ submit }} user story</div>
     <form action="" method="post">
         <label for="story_title">
             <span>Story title <span class="required">*</span></span>
-            <input type="text" class="input-field" name="story_title" value="{{ story_title }}" />
+            <input type="text" class="input-field" name="story_title" value="{{ story.story_title }}" />
         </label>
         <label for="user_story">
             <span>User story <span class="required">*</span></span>
-            <textarea name="user_story" class="textarea-field">{{ user_story }}</textarea>
+            <textarea name="user_story" class="textarea-field">{{ story.user_story }}</textarea>
         </label>
         <label for="acceptance_criteria">
             <span>Acceptance criteria <span class="required">*</span></span>
-            <textarea name="acceptance_criteria" class="textarea-field">{{ acceptance_criteria }}</textarea>
+            <textarea name="acceptance_criteria" class="textarea-field">{{ story.acceptance_criteria }}</textarea>
         </label>
         <label for="business_value">
             <span>Business value <span class="required">*</span></span>
-            <input type="number" class="input-field" min="100" max="1500" step="100" name="business_value" value="{{ business_value }}" />
+            <input type="number" class="input-field" min="100" max="1500" step="100" name="business_value" value="{{ story.business_value }}" />
         </label>
         <label for="estimation">
             <span>Estimation <span class="required">*</span></span>
-            <input type="number" class="input-field" min="0.5" max="40" step="0.5" name="estimation" value="{{ estimation }}" />
+            <input type="number" class="input-field" min="0.5" max="40" step="0.5" name="estimation" value="{{ story.estimation }}" />
         </label>
         <label for="status">
             <span>Status </span><select name="status" class="select-field">
-                <option value="0" {{'selected="selected"' if status==0}}>Planning</option>
-                <option value="1" {{'selected="selected"' if status==1}}>Todo</option>
-                <option value="2" {{'selected="selected"' if status==2}}>In Progress</option>
-                <option value="3" {{'selected="selected"' if status==3}}>Review</option>
-                <option value="4" {{'selected="selected"' if status==4}}>Done</option>
+                <option value="0" {{'selected="selected"' if story.status==0}}>Planning</option>
+                <option value="1" {{'selected="selected"' if story.status==1}}>Todo</option>
+                <option value="2" {{'selected="selected"' if story.status==2}}>In Progress</option>
+                <option value="3" {{'selected="selected"' if story.status==3}}>Review</option>
+                <option value="4" {{'selected="selected"' if story.status==4}}>Done</option>
             </select>
         </label>
         <label>
