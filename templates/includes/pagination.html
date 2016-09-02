@@ -1,6 +1,6 @@
 {% if page > 1 %}
-    <a href="?page={{ page - 1 }}">Previous</a>
+    <a href="{{ url_for('userstory_list', page=page - 1) }}">Previous</a>
 {% endif %}
 {% if page < pages %}
-    <a href="?page={{ page + 1 }}">Next</a>
+    <a href="{{ url_for('userstory_list', page=page + 1) }}">Next</a>
 {% endif %}

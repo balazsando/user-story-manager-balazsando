@@ -1,7 +1,5 @@
-import datetime
 import os.path
-from flask import Flask, g, redirect, request, session, url_for, abort, render_template, flash
-from functools import wraps
+from flask import Flask, g, redirect, request, url_for, render_template, flash
 from peewee import *
 
 DATABASE = "homework.db"
@@ -13,18 +11,16 @@ database = SqliteDatabase(DATABASE)
 # database = PostgresqlDatabase("your_db")
 
 
-class BaseModel(Model):
-    class Meta:
-        database = database
-
-
-class UserStory(BaseModel):
+class UserStory(Model):
     story_title = CharField()
     user_story = TextField()
     acceptance_criteria = TextField()
     business_value = IntegerField()
     estimation = FloatField()
     status = IntegerField()
+
+    class Meta:
+        database = database
 
 
 def create_tables():
@@ -49,15 +45,13 @@ def homepage():
     return userstory_list()
 
 
-def object_list(template_name, qr, var_name="object_list", **kwargs):
-    kwargs.update(page=int(request.args.get("page", 1)), pages=(qr.count()-1) // 5 + 1)
-    kwargs[var_name] = qr.paginate(kwargs["page"], 5)
-    return render_template(template_name, **kwargs)
-
-
 @app.route("/list/")
-def userstory_list():
-    return object_list("list.html", UserStory.select(), "story_list")
+@app.route("/list/<int:page>")
+def userstory_list(page=1):
+    kwargs = {"page": page,
+              "pages": UserStory.select().count() // 1,
+              "story_list": UserStory.select().paginate(page, 1)}
+    return render_template("list.html", **kwargs)
 
 
 @app.route("/story/", methods=["GET", "POST"])
@@ -86,6 +80,6 @@ def delete_userstory(story_id):
 
 
 if __name__ == "__main__":
-    if not os.path.isfile("homework.db"):
+    if not os.path.isfile(DATABASE):
         create_tables()
     app.run()
