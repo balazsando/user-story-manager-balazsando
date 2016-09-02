@@ -49,8 +49,8 @@ def homepage():
 @app.route("/list/<int:page>")
 def userstory_list(page=1):
     kwargs = {"page": page,
-              "pages": UserStory.select().count() // 1,
-              "story_list": UserStory.select().paginate(page, 1)}
+              "pages": UserStory.select().count() // 10,
+              "story_list": UserStory.select().paginate(page, 10)}
     return render_template("list.html", **kwargs)
 
 
