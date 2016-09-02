@@ -63,23 +63,24 @@ def userstory_list():
 @app.route("/story/", methods=["GET", "POST"])
 def new_userstory():
     if request.method == "POST" and all(request.form.to_dict().values()):
-        if request.args.get("story_id"):
-            UserStory.update(**request.form.to_dict()).where(UserStory.id == request.args.get("story_id")).execute()
-            flash("User Story updated!")
-        else:
-            user_story = UserStory.create(**request.form.to_dict())
-            flash("User Story created!")
+        user_story = UserStory.create(**request.form.to_dict())
+        flash("User Story created!")
         return redirect(url_for("homepage"))
-    kwargs = {"submit": "Create", "story": ""}
-    if request.args.get("story_id"):
-        kwargs["story"] = UserStory.get(UserStory.id == request.args.get("story_id"))
-        kwargs["submit"] = "Update"
-    return render_template("form.html", **kwargs)
+    return render_template("form.html", story="", submit="Create")
 
 
-@app.route("/delete/", methods=["GET"])
-def delete_userstory():
-    UserStory.delete().where(UserStory.id == request.args.get("story_id")).execute()
+@app.route("/story/<story_id>", methods=["GET", "POST"])
+def update_userstory(story_id):
+    if request.method == "POST" and all(request.form.to_dict().values()):
+        UserStory.update(**request.form.to_dict()).where(UserStory.id == story_id).execute()
+        flash("User Story updated!")
+        return redirect(url_for("homepage"))
+    return render_template("form.html", story=UserStory.get(UserStory.id == story_id), submit="Update")
+
+
+@app.route("/delete/<story_id>", methods=["GET"])
+def delete_userstory(story_id):
+    UserStory.delete().where(UserStory.id == story_id).execute()
     flash("User Story deleted!")
     return redirect(url_for("homepage"))
 
